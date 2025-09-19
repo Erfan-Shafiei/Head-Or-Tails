@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شیر یا خط | بازی جذاب سکه اندازی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__pulse animate__infinite animate__slower">شیر یا خط</h1>
+
+        <div class="coin-container">
+            <div class="coin-shadow"></div>
+            <div class="coin" id="coin">
+                <div class="coin-face front">
+                    <div class="coin-symbol">شیر</div>
+                </div>
+                <div class="coin-face back">
+                    <div class="coin-symbol">خط</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="result" class="animate__animated"></div>
+
+        <button class="btn" onclick="flipCoin()">بنداز سکه!</button>
+
+        <div class="stats">
+            <div class="stat-box">
+                شیر
+                <span id="heads-count">0</span>
+            </div>
+            <div class="stat-box">
+                خط
+                <span id="tails-count">0</span>
+            </div>
+            <div class="stat-box">
+                جمع
+                <span id="total-count">0</span>
+            </div>
+        </div>
+        <footer>
+            <p>این وبسایت توسط <a href="https://eko2.ir" target="_blank">عرفان شفیعی</a> توسعه داده شده و حق مالکیت آن محفوظ
+                است. برای حمایت مالی روی <a href="https://reymit.ir/eko2.ir">این لینک</a> کلیک کنید</p>
+        </footer>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

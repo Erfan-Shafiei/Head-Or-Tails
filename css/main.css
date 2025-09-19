@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap');
+
+:root {
+    --gold: linear-gradient(135deg, #f5d742 0%, #e0aa3e 50%, #f5d742 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #b8b8b8 50%, #e0e0e0 100%);
+    --primary: #6a1b9a;
+    --secondary: #9c27b0;
+    --accent: #ff9800;
+    --dark: #212121;
+    --light: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Almarai', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light);
+    overflow-x: hidden;
+    position: relative;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: var(--opacity);
+    }
+}
+
+.container {
+    width: 95%;
+    max-width: 600px;
+    background: rgba(33, 33, 33, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 152, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.1) 0%, rgba(255, 152, 0, 0) 70%);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #ff9800, #ff5722);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(255, 152, 0, 0.3);
+    position: relative;
+    display: inline-block;
+    font-weight: 800;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #ff9800, #ff5722);
+    border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(255, 152, 0, 0.5);
+}
+
+.coin-container {
+    perspective: 1000px;
+    margin: 40px auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+
+.coin {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.coin-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+        inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    border: 8px solid rgba(255, 215, 0, 0.5);
+}
+
+.front {
+    background: var(--gold);
+    transform: rotateY(0deg);
+}
+
+.back {
+    background: var(--silver);
+    transform: rotateY(180deg);
+}
+
+.coin-symbol {
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.coin-face::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0.5;
+}
+
+.btn {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    color: white;
+    border: none;
+    padding: 18px 45px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 30px;
+    transition: all 0.3s;
+    box-shadow: 0 8px 25px rgba(106, 27, 154, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(106, 27, 154, 0.7),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+.btn:active {
+    transform: translateY(2px);
+}
+
+.btn:disabled {
+    background: linear-gradient(135deg, #757575, #616161);
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0) 45%,
+            rgba(255, 255, 255, 0.3) 48%,
+            rgba(255, 255, 255, 0.3) 52%,
+            rgba(255, 255, 255, 0) 55%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: rotate(30deg);
+    transition: all 0.7s;
+}
+
+.btn:hover::after {
+    left: 100%;
+    top: 100%;
+}
+
+#result {
+    margin: 30px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.heads {
+    color: #f5d742;
+    background: linear-gradient(to right, #f5d742, #e0aa3e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.tails {
+    color: #e0e0e0;
+    background: linear-gradient(to right, #e0e0e0, #b8b8b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-box {
+    padding: 15px;
+    border-radius: 10px;
+    flex: 1;
+    margin: 0 5px;
+    transition: all 0.3s;
+    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), var(--secondary));
+}
+
+.stat-box span {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: white;
+}
+
+.confetti {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--bg);
+    opacity: 0;
+    z-index: 10;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--bg);
+}
+
+.coin-shadow {
+    position: absolute;
+    width: 180px;
+    height: 30px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(5px);
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .coin {
+        width: 170px;
+        height: 170px;
+    }
+
+    .coin-symbol {
+        font-size: 4rem;
+    }
+
+    .btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+    }
+
+    #result {
+        font-size: 2rem;
+    }
+
+    .stat-box span {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animation for coin */
+@keyframes flip {
+    0% {
+        transform: rotateY(0);
+    }
+
+    100% {
+        transform: rotateY(1800deg);
+    }
+}
+
+/* Glow effect */
+.glow {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px -10px #f5d742;
+    }
+
+    to {
+        box-shadow: 0 0 20px 5px #f5d742;
+    }
+}
+
+footer {
+    margin-top: 20px;
+}
+
+footer p {
+    color: #ffffff8b;
+}
+
+footer a {
+    color: #ffffffc4;
+    text-decoration: none;
+}
+
+footer a:hover {
+    transition: 0.7s;
+    color: #ffffff;
+    text-decoration: none;
+}
